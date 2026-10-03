@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBuddy – AI Fitness Plan Generator</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        <div class="brand-mark">FB</div>
+        <div>
+            <h1>FitBuddy</h1>
+            <p>AI Fitness Plan Generator</p>
+        </div>
+    </div>
+    <span class="badge">Powered by Gemini</span>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <div>
+            <span class="eyebrow">PERSONALIZED FITNESS</span>
+            <h2>Your 7-Day Fitness Plan, Built With AI</h2>
+            <p>
+                Enter your basic profile, choose your goal and intensity,
+                and FitBuddy will generate a personalized weekly workout plan.
+            </p>
+        </div>
+    </section>
+
+    <div class="grid">
+        <section class="card">
+            <div class="card-title">
+                <h3>Create Your Plan</h3>
+                <span>Step 1</span>
+            </div>
+
+            <form id="planForm">
+                <label>Name
+                    <input type="text" name="name" placeholder="Your name" required>
+                </label>
+
+                <div class="two-col">
+                    <label>Age
+                        <input type="number" name="age" min="13" max="100" required>
+                    </label>
+
+                    <label>Gender
+                        <select name="gender" required>
+                            <option value="">Select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                            <option>Prefer not to say</option>
+                        </select>
+                    </label>
+                </div>
+
+                <label>Weight (kg)
+                    <input type="number" name="weight" min="20" max="500" required>
+                </label>
+
+                <label>Primary Goal
+                    <select name="goal" required>
+                        <option value="">Select a goal</option>
+                        <option>Weight Loss</option>
+                        <option>Muscle Gain</option>
+                        <option>General Wellness</option>
+                        <option>Endurance</option>
+                        <option>Flexibility</option>
+                    </select>
+                </label>
+
+                <label>Workout Intensity
+                    <select name="intensity" required>
+                        <option value="">Select intensity</option>
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+                    </select>
+                </label>
+
+                <button class="primary" type="submit">
+                    Generate 7-Day Plan
+                </button>
+            </form>
+
+            <p class="disclaimer">
+                FitBuddy provides general fitness guidance and is not a substitute
+                for professional medical or fitness advice.
+            </p>
+        </section>
+
+        <section class="card result-card">
+            <div class="card-title">
+                <h3>Your AI Plan</h3>
+                <span id="status">Waiting</span>
+            </div>
+
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon">🏋️</div>
+                <h4>No plan generated yet</h4>
+                <p>Complete your profile and click “Generate 7-Day Plan”.</p>
+            </div>
+
+            <article id="planResult" class="markdown-body hidden"></article>
+
+            <div id="feedbackBox" class="feedback hidden">
+                <h4>Want to improve the plan?</h4>
+                <p>Tell FitBuddy what you want changed.</p>
+                <form id="feedbackForm">
+                    <input type="hidden" id="planId">
+                    <textarea id="feedbackText"
+                        placeholder="Example: Add more cardio and make Day 3 lighter."
+                        required></textarea>
+                    <button class="secondary" type="submit">Revise Plan</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <section class="card nutrition-card">
+        <div class="card-title">
+            <h3>Nutrition & Recovery Tip</h3>
+            <button id="tipButton" class="small-btn" type="button">Get Tip</button>
+        </div>
+        <p id="nutritionTip">Generate a plan first, then request a goal-specific tip.</p>
+    </section>
+</main>
+
+<footer>
+    <p>FitBuddy • AI Fitness Plan Generator using Gemini Models</p>
+</footer>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
